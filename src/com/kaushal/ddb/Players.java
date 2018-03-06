@@ -47,7 +47,7 @@ public class Players extends HttpServlet {
 			if(request.getParameter("id")==null) {
 				PreparedStatement ps = con.prepareStatement("SELECT * FROM tp");
 				ResultSet rs = ps.executeQuery();
-				out.println("<!DOCTYPE html><html><head><title>Players</title><body>");
+				out.println("<!DOCTYPE html><html><head><title>Players</title><link rel='stylesheet' href='css/index.css'></head><body>");
 				out.println("<table caption='Table Timepas' border='2px'>");
 				out.println("<tr><th>ID</th><th>Name</th><th>Link</th></tr>");
 				while(rs.next()) {

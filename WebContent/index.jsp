@@ -4,14 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Players List</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<title>VPT Game</title>
 </head>
 <body>
-<h1>Players List</h1>
-<form action="Players" method="GET">
-	<input type="text" placeholder="Enter id of player" name="id" />
-	<input type="submit" value="Send" />
-</form>
-
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo" style="margin-left: 15px">Virtual Player Transfer Game</a>
+    </div>
+</nav>
+<div class="container" style="margin-top: 15px;">
+<a href="Register.jsp" class="waves-effect waves-light btn">Register</a>
+<a href="Login" class="waves-effect waves-light btn">Login</a>
+</div>
 </body>
 </html>
