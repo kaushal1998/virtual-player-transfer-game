@@ -2,12 +2,10 @@ package com.kaushal.ddb;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.PasswordAuthentication;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -74,7 +72,7 @@ public class Insert extends HttpServlet {
 					out.println("<script>alert('User already exists!');</script>");
 					out.println("<a href='Register.jsp' class='waves-effect waves-light btn red'>Back</a>");
 				}else {
-					PreparedStatement ps2 = con.prepareStatement("INSERT INTO user_vgame(name, points, password, budget, league_id) VALUES (?, 0, ?, 0, ?)");
+					PreparedStatement ps2 = con.prepareStatement("INSERT INTO user_vgame(name, points, password, budget, league_id) VALUES (?, 0, ?, 15000, ?)");
 					ps2.setString(1, username);
 					ps2.setString(2, password);
 					ps2.setString(3, league_id);
