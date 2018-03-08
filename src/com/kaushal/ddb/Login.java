@@ -94,7 +94,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("username", username);
 					response.sendRedirect("Home");
 				}else {
-					out.println("Invalid characters");
+					out.println("<script>alert('Incorrect credentials!')</script>");
 					doGet(request, response);
 				}
 			} catch (SQLException e) {
