@@ -50,6 +50,9 @@ public class Admin extends HttpServlet {
 		out.println("<nav>\r\n" + 
 				"    <div class=\"nav-wrapper\">\r\n" + 
 				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">Welcome Admin</a>\r\n" + 
+				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" + 
+				"        <li><a href=\"Add\">Add Team/Player</a></li>\r\n" + 
+				"      </ul>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>");
 		out.println("<h4>Give Points to players</h4>");
@@ -109,7 +112,7 @@ public class Admin extends HttpServlet {
 							con.rollback();
 							break;
 						}
-						if (!rs3.next()) {
+						if (!rs3.isAfterLast()) {
 							con.commit();
 							System.out.println("True");
 							out.println("<script>alert('Player points updated successfully!')</script>");

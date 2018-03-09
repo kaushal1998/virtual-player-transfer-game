@@ -79,7 +79,7 @@ public class Insert extends HttpServlet {
 					int i = ps2.executeUpdate();
 					if(i!=0) {
 						out.println("User has been registered successfully");
-						out.println("<a href='Register.jsp' class='waves-effect waves-light btn red'>Go to Login Page</a>");
+						out.println("<a href='Login' class='waves-effect waves-light btn red'>Go to Login Page</a>");
 						out.println("<a href='Register.jsp' class='waves-effect waves-light btn red'>Register again</a>");
 					}else {
 						out.println("Something went wrong! Please try again");

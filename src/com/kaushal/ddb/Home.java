@@ -42,9 +42,12 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		ArrayList<String> al = new ArrayList<>();
-		String username = (String) session.getAttribute("username");
-		if (username == null) {
+		String username="";
+		try {
+			username = (String) session.getAttribute("username");
+		}catch(NullPointerException e) {
 			response.sendRedirect("Login");
+			return;
 		}
 		PrintWriter out = response.getWriter();
 		PreparedStatement ps;
@@ -74,7 +77,10 @@ public class Home extends HttpServlet {
 		out.println("<body>");
 		out.println("<nav>\r\n" + 
 				"    <div class=\"nav-wrapper\">\r\n" + 
-				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">Welcome " + name + "</a>\r\n" + 
+				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">Welcome " + name + "</a>\r\n" +
+				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" + 
+				"        <li><a href=\"Logout\">Logout</a></li>\r\n" + 
+				"      </ul>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>");
 		out.println("<h5 class='left-align' style='margin: 5px;'>Remaining Budget: "+budget + "</h5>");
@@ -83,14 +89,14 @@ public class Home extends HttpServlet {
 		out.println("<h5>My Team</h5>");
 		out.println("<ul class=\"collapsible popout\" data-collapsible=\"expandable\">");
 		try {
-			PreparedStatement ps2 = con.prepareStatement("SELECT buy.id as id, user_id, player_id, players.name, team_id, teams.name as team_name, value FROM buy LEFT JOIN players ON players.id = buy.player_id LEFT JOIN teams ON teams.id = players.team_id WHERE user_id=?");
+			PreparedStatement ps2 = con.prepareStatement("SELECT buy.id as id, user_id, player_id, players.name, team_id, teams.name as team_name, players.points as points, value FROM buy LEFT JOIN players ON players.id = buy.player_id LEFT JOIN teams ON teams.id = players.team_id WHERE user_id=?");
 			ps2.setString(1, id);
 			ResultSet rs2 = ps2.executeQuery();
 			while(rs2.next()) {
 				al.add(rs2.getString("player_id"));
 				out.println("<li>");
 				out.println("<div class='collapsible-header'><strong>"+ rs2.getString("name") +"</strong></div>");
-				out.println("<div class='collapsible-body'>Team: <strong>"+rs2.getString("team_name")+"</strong></br>Value: <strong>"+ rs2.getString("value") +"</strong>");
+				out.println("<div class='collapsible-body'>Team: <strong>"+rs2.getString("team_name")+"</strong></br>Value: <strong>"+ rs2.getString("value") +"</strong></br>Total Points: <strong>"+ rs2.getString("points") +"</strong>");
 				out.println("<form action='Home' method='POST'><input type='hidden' name='player_id' value='"+ rs2.getString("player_id") +"'/><input type='submit' class='waves-effect waves-light btn' value='SELL'/></form>");
 				out.println("</div>");
 				out.println("</li>");
@@ -110,7 +116,7 @@ public class Home extends HttpServlet {
 			while(rs3.next()) {
 				out.println("<li>");
 				out.println("<div class='collapsible-header'><strong>"+ rs3.getString("name") +"</strong></div>");
-				out.println("<div class='collapsible-body'>Team: <strong>"+rs3.getString("team_name")+"</strong></br>Value: <strong>"+ rs3.getString("value") +"</strong>");
+				out.println("<div class='collapsible-body'>Team: <strong>"+rs3.getString("team_name")+"</strong></br>Value: <strong>"+ rs3.getString("value") +"</strong></br>Total Points: <strong>"+ rs3.getString("points") +"</strong>");
 				if(!al.contains(rs3.getString("id")))
 					out.println("<form action='Home' method='POST'><input type='hidden' name='player_id_buy' value='"+ rs3.getString("id") +"'/><input type='submit' class='waves-effect waves-light btn' value='BUY'/></form>");
 				out.println("</div>");
