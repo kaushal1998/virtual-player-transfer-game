@@ -51,7 +51,8 @@ public class Home extends HttpServlet {
 		}
 		PrintWriter out = response.getWriter();
 		PreparedStatement ps;
-		String budget = "", name = "", id="", points="";
+		int rank=0;
+		String budget = "", name = "", id="", points="", league_id="";
 		try {
 			ps = con.prepareStatement("SELECT user_vgame.id as id, name, points, budget, league_id, country, points FROM user_vgame LEFT JOIN league ON user_vgame.league_id = league.id WHERE name=?");
 			ps.setString(1, username);
@@ -61,6 +62,24 @@ public class Home extends HttpServlet {
 				name = rs.getString("name");
 				id = rs.getString("id");
 				points = rs.getString("points");
+				league_id = rs.getString("league_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			PreparedStatement psn = con.prepareStatement("SELECT * FROM user_vgame WHERE league_id=? ORDER BY points DESC");
+			psn.setString(1, league_id);
+			ResultSet rsn = psn.executeQuery();
+			while(rsn.next()) {
+				if(rsn.getString("id").equals(id)) {
+					rank++;
+					break;
+				}else {
+					rank++;
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -84,6 +103,7 @@ public class Home extends HttpServlet {
 				"    </div>\r\n" + 
 				"  </nav>");
 		out.println("<h5 class='left-align' style='margin: 5px;'>Remaining Budget: "+budget + "</h5>");
+		out.println("<div class='center-align' style='margin: 5px;'>Rank: "+ rank +"</div>");
 		out.println("<h5 class='right-align'  style='margin: 5px;'>Points: "+points + "</h5>");
 		out.println("<div class='card' style='padding: 15px; margin: 20px;'>");
 		out.println("<h5>My Team</h5>");
