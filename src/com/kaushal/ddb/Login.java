@@ -43,18 +43,19 @@ public class Login extends HttpServlet {
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Login</title>");
-		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css\">");
 		out.println("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js\"></script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<nav>\r\n" + 
-				"    <div class=\"nav-wrapper\">\r\n" + 
+				"    <div class=\"nav-wrapper blue\">\r\n" + 
 				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">VPTGame</a>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>");
 		out.println("<div class='row'>");
 		out.println("<form class='card col s12 m6 l6' style='margin-left: 22%; margin-top: 25px;' action='Login' method='POST'>");
+		out.println("<h5>Login</h5>");
 		out.println("<div class=\"input-field\">\r\n" + 
 				"	          <input name=\"username\" id=\"username\" type=\"text\" class=\"validate\">\r\n" + 
 				"	          <label for=\"username\">Username</label>\r\n" + 
@@ -65,7 +66,7 @@ public class Login extends HttpServlet {
 				"	          <label for=\"password\">Password</label>\r\n" + 
 				"	        </div>");
 		out.println("<div class=\"input-field\">\r\n" + 
-				"	          <input name=\"submit\" id=\"submit\" type=\"submit\" class=\"waves-effect waves-light btn\" value=\"Login\" style=\"margin: 15px\">\r\n" + 
+				"	          <input name=\"submit\" id=\"submit\" type=\"submit\" class=\"btn blue\" value=\"Login\" style=\"margin: 15px\">\r\n" + 
 				"	        </div>");
 		out.println("</form>");
 		out.println("</div>");

@@ -42,20 +42,21 @@ public class Admin extends HttpServlet {
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Admin</title>");
-		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css\">");
 		out.println("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js\"></script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<nav>\r\n" + 
-				"    <div class=\"nav-wrapper\">\r\n" + 
+				"    <div class=\"nav-wrapper blue\">\r\n" + 
 				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">Welcome Admin</a>\r\n" + 
-				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" + 
+				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" +
+				"        <li><a href=\"StandingAdmin\">Standings</a></li>\r\n" + 
 				"        <li><a href=\"Add\">Add Team/Player</a></li>\r\n" + 
 				"      </ul>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>");
-		out.println("<h4>Give Points to players</h4>");
+		out.println("<h4 style=\"margin-left: 15px;\">Give Points to Players</h4>");
 		out.println("<ul class=\"collapsible popout\" data-collapsible=\"expandable\">");
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT players.id as id, team_id, players.name as name, value, points, teams.name as team_name FROM players LEFT JOIN teams ON teams.id = players.team_id");
@@ -64,7 +65,7 @@ public class Admin extends HttpServlet {
 				out.println("<li>");
 				out.println("<div class='collapsible-header'><strong>"+ rs.getString("name") +"</strong></div>");
 				out.println("<div class='collapsible-body'>Team: <strong>"+rs.getString("team_name")+"</strong></br>Value: <strong>"+ rs.getString("value") +"</strong></br>Points: <strong>"+ rs.getString("points") +"</strong>");
-				out.println("<form action='Admin' method='POST'><input type='hidden' name='player_id' value='"+ rs.getString("id") +"'/><div class='input-field'><input type='number' class='validate' name='points' id='points'><label for='points'>Enter Points</label></div><input type='submit' class='waves-effect waves-light btn' value='Add Points'/></form>");
+				out.println("<form action='Admin' method='POST'><input type='hidden' name='player_id' value='"+ rs.getString("id") +"'/><div class='input-field'><input type='number' class='validate' name='points' id='points'><label for='points'>Enter Points</label></div><input type='submit' class='btn blue' value='Add Points'/></form>");
 				out.println("</div>");
 				out.println("</li>");
 			}
@@ -73,6 +74,9 @@ public class Admin extends HttpServlet {
 		}
 		out.println("</ul>");
 		out.println("</body>");
+		out.println("<script>$(document).ready(function(){\r\n" + 
+				"    $('.collapsible').collapsible();\r\n" + 
+				"  });</script>");
 		out.println("</html>");
 	}
 

@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <title>Register User</title>
 </head>
 <body>
 
 	<nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper blue">
       <a href="#" class="brand-logo" style="margin-left: 15px">VPTGame</a>
     </div>
   </nav>
@@ -42,7 +42,7 @@
 			 </div>
 	        
 	        <div class="input-field">
-	          <input name="submit" id="submit" type="submit" class="waves-effect waves-light btn" value="Register" style="padding-top: 5px; margin: 15px">
+	          <input name="submit" id="submit" type="submit" class="btn blue" value="Register">
 	        </div>
 			
 		</form>
@@ -51,9 +51,9 @@
 
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-		    $('select').material_select();
-		});
+	$(document).ready(function(){
+	    $('select').formSelect();
+	  });
 	</script>
 </body>
 </html>

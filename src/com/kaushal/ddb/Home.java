@@ -89,21 +89,22 @@ public class Home extends HttpServlet {
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Home</title>");
-		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css\">");
 		out.println("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js\"></script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<nav>\r\n" + 
-				"    <div class=\"nav-wrapper\">\r\n" + 
+				"    <div class=\"nav-wrapper blue\">\r\n" + 
 				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">Welcome " + name + "</a>\r\n" +
-				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" + 
-				"        <li><a href=\"Logout\">Logout</a></li>\r\n" + 
+				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" +
+				"        <li><a href=\"Standings\">Standings</a></li>\r\n" +
+				"        <li><a href=\"Logout\">Logout</a></li>\r\n" +
 				"      </ul>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>");
 		out.println("<h5 class='left-align' style='margin: 5px;'>Remaining Budget: "+budget + "</h5>");
-		out.println("<div class='center-align' style='margin: 5px;'>Rank: "+ rank +"</div>");
+		out.println("<div class='center-align' style='margin: 5px;'><strong>Rank: "+ rank +"</strong></div>");
 		out.println("<h5 class='right-align'  style='margin: 5px;'>Points: "+points + "</h5>");
 		out.println("<div class='card' style='padding: 15px; margin: 20px;'>");
 		out.println("<h5>My Team</h5>");
@@ -117,7 +118,7 @@ public class Home extends HttpServlet {
 				out.println("<li>");
 				out.println("<div class='collapsible-header'><strong>"+ rs2.getString("name") +"</strong></div>");
 				out.println("<div class='collapsible-body'>Team: <strong>"+rs2.getString("team_name")+"</strong></br>Value: <strong>"+ rs2.getString("value") +"</strong></br>Total Points: <strong>"+ rs2.getString("points") +"</strong>");
-				out.println("<form action='Home' method='POST'><input type='hidden' name='player_id' value='"+ rs2.getString("player_id") +"'/><input type='submit' class='waves-effect waves-light btn' value='SELL'/></form>");
+				out.println("<form action='Home' method='POST'><input type='hidden' name='player_id' value='"+ rs2.getString("player_id") +"'/><input type='submit' class='btn blue' value='SELL'/></form>");
 				out.println("</div>");
 				out.println("</li>");
 			}
@@ -138,7 +139,7 @@ public class Home extends HttpServlet {
 				out.println("<div class='collapsible-header'><strong>"+ rs3.getString("name") +"</strong></div>");
 				out.println("<div class='collapsible-body'>Team: <strong>"+rs3.getString("team_name")+"</strong></br>Value: <strong>"+ rs3.getString("value") +"</strong></br>Total Points: <strong>"+ rs3.getString("points") +"</strong>");
 				if(!al.contains(rs3.getString("id")))
-					out.println("<form action='Home' method='POST'><input type='hidden' name='player_id_buy' value='"+ rs3.getString("id") +"'/><input type='submit' class='waves-effect waves-light btn' value='BUY'/></form>");
+					out.println("<form action='Home' method='POST'><input type='hidden' name='player_id_buy' value='"+ rs3.getString("id") +"'/><input type='submit' class='btn blue' value='BUY'/></form>");
 				out.println("</div>");
 				out.println("</li>");
 			}

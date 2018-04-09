@@ -51,9 +51,9 @@ public class Insert extends HttpServlet {
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Inserting</title>");
-		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css\">");
 		out.println("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js\"></script>");
 		out.println("</head>");
 		out.println("<body>");
 		if(request.getParameter("submit") != null && request.getParameter("username") != null && request.getParameter("password") != null && request.getParameter("country") != null) {
@@ -78,11 +78,11 @@ public class Insert extends HttpServlet {
 					ps2.setString(3, league_id);
 					int i = ps2.executeUpdate();
 					if(i!=0) {
-						out.println("User has been registered successfully");
+						out.println("<h1>User has been registered successfully</h1>");
 						out.println("<a href='Login' class='waves-effect waves-light btn red'>Go to Login Page</a>");
 						out.println("<a href='Register.jsp' class='waves-effect waves-light btn red'>Register again</a>");
 					}else {
-						out.println("Something went wrong! Please try again");
+						out.println("<h1>Something went wrong! Please try again</h1>");
 						out.println("<a href='Register.jsp' class='waves-effect waves-light btn red'>Register Page</a>");
 					}
 				}

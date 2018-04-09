@@ -21,17 +21,17 @@ public class Add extends HttpServlet {
 	Connection con;
 	
 	 @Override
-	    public void init() throws ServletException {
-	    	// TODO Auto-generated method stub
-	    	super.init();
-	    	try {
-				Class.forName("oracle.jdbc.OracleDriver");
-				con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","kaushal","kaushal");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
+	 public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	super.init();
+    	try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","kaushal","kaushal");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
 	
     public Add() {
         super();
@@ -45,20 +45,20 @@ public class Add extends HttpServlet {
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Admin</title>");
-		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css\">");
 		out.println("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js\"></script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<nav>\r\n" + 
-				"    <div class=\"nav-wrapper\">\r\n" + 
-				"      <a href=\"#\" class=\"brand-logo\">Logo</a>\r\n" + 
+				"    <div class=\"nav-wrapper blue\">\r\n" + 
+				"      <a href=\"#\" class=\"brand-logo\" style=\"margin-left: 15px\">Admin</a>\r\n" + 
 				"      <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\r\n" + 
 				"        <li><a href=\"Admin\">Home</a></li>\r\n" + 
 				"      </ul>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>");
-		out.println("<div class='card' style='padding: 20px;margin: 20px;'>");
+		out.println("<div class='card' style='padding: 15px;margin: 20px;'>");
 		out.println("<h4>Add Team</h4>");
 		out.println("<form method='POST' action='Add'>");
 		out.println("<div class=\"input-field\">\r\n" + 
@@ -66,7 +66,7 @@ public class Add extends HttpServlet {
 				"          <label for=\"team_name\">Enter team name:</label>\r\n" + 
 				"        </div>");
 		out.println("<div class=\"input-field\">\r\n" + 
-				"          <input id=\"t_submit\" name=\"t_submit\" type=\"submit\" class=\"waves-effect waves-light btn\">\r\n" + 
+				"          <input id=\"t_submit\" name=\"t_submit\" type=\"submit\" class=\"btn blue\">\r\n" + 
 				"        </div>");
 		out.println("</form>");
 		out.println("</div>");
@@ -81,7 +81,7 @@ public class Add extends HttpServlet {
 		}
 		
 		
-		out.println("<div class='card' style='padding: 20px;margin: 20px;'>");
+		out.println("<div class='card' style='padding: 15px;margin: 20px;'>");
 		out.println("<h4>Add Player</h4>");
 		out.println("<form method='POST' action='Add'>");
 		out.println("<div class=\"input-field\">\r\n" + 
@@ -107,13 +107,13 @@ public class Add extends HttpServlet {
 				"    <label>Materialize Select</label>\r\n" + 
 				"  </div>");
 		out.println("<div class=\"input-field\">\r\n" + 
-				"          <input id=\"p_submit\" name=\"p_submit\" type=\"submit\" class=\"waves-effect waves-light btn\">\r\n" + 
+				"          <input id=\"p_submit\" name=\"p_submit\" type=\"submit\" class=\"btn blue\">\r\n" + 
 				"        </div>");
 		out.println("</form>");
 		out.println("</div>");
 		out.println("</body>");
 		out.println("<script>$(document).ready(function() {\r\n" + 
-				"    $('select').material_select();\r\n" + 
+				"    $('select').formSelect();\r\n" + 
 				"  });</script>");
 		out.println("</html>");
 	}
