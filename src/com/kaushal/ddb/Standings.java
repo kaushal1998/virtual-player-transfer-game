@@ -91,7 +91,7 @@ public class Standings extends HttpServlet {
 			out.println("<ul class=\"collection with-header\"><li class=\"collection-header\"><h4>Standings (India)</h4></li>");
 			try {
 				out.println("<script>console.log("+league_id+")</script>");
-				PreparedStatement ps2 = con.prepareStatement("SELECT user_vgame.id as id, points, league_id, name FROM user_vgame WHERE league_id=1 ORDER BY points DESC");
+				PreparedStatement ps2 = con.prepareStatement("SELECT user_india.id as id, points, league_id, name FROM user_india ORDER BY points DESC");
 				ResultSet rs2 = ps2.executeQuery();
 				while(rs2.next()) {
 					out.println("<li class=\"collection-item\"><strong>"+rs2.getString("name")+"</strong>&nbsp&nbsp&nbspPonits: "+rs2.getString("points")+"</li>");
@@ -107,7 +107,7 @@ public class Standings extends HttpServlet {
 			out.println("<ul class=\"collection with-header\"><li class=\"collection-header\"><h4>Standings (USA)</h4></li>");
 			try {
 				out.println("<script>console.log("+league_id+")</script>");
-				PreparedStatement ps2 = con.prepareStatement("SELECT user_vgame.id as id, points, league_id, name FROM user_vgame WHERE league_id=2 ORDER BY points DESC");
+				PreparedStatement ps2 = con.prepareStatement("SELECT user_usa.id as id, points, league_id, name FROM user_usa WHERE ORDER BY points DESC");
 				ResultSet rs2 = ps2.executeQuery();
 				while(rs2.next()) {
 					out.println("<li class=\"collection-item\"><strong>"+rs2.getString("name")+"</strong>&nbsp&nbsp&nbspPonits: "+rs2.getString("points")+"</li>");
@@ -123,7 +123,7 @@ public class Standings extends HttpServlet {
 			out.println("<ul class=\"collection with-header\"><li class=\"collection-header\"><h4>Standings (Spain)</h4></li>");
 			try {
 				out.println("<script>console.log("+league_id+")</script>");
-				PreparedStatement ps2 = con.prepareStatement("SELECT user_vgame.id as id, points, league_id, name FROM user_vgame WHERE league_id=3 ORDER BY points DESC");
+				PreparedStatement ps2 = con.prepareStatement("SELECT user_spain.id as id, points, league_id, name FROM user_spain ORDER BY points DESC");
 				ResultSet rs2 = ps2.executeQuery();
 				while(rs2.next()) {
 					out.println("<li class=\"collection-item\"><strong>"+rs2.getString("name")+"</strong>&nbsp&nbsp&nbspPonits: "+rs2.getString("points")+"</li>");
